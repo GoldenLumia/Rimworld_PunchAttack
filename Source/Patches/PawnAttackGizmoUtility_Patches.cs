@@ -77,7 +77,7 @@ namespace PunchAttack
             failStr = "";
             Pawn target2;
             //Removed drafted check since it's done earlier now
-            if (!pawn.IsColonistPlayerControlled && !pawn.IsColonyMech && !pawn.IsColonyMutantPlayerControlled)
+            if (!pawn.IsColonistPlayerControlled && !pawn.IsColonyMech && !pawn.IsColonySubhumanPlayerControlled)
             {
                 failStr = "CannotOrderNonControlledLower".Translate();
             }
@@ -89,7 +89,7 @@ namespace PunchAttack
             {
                 failStr = "IsIncapableOfViolenceLower".Translate(pawn.LabelShort, pawn);
             }
-            else if (!InteractionUtility.TryGetRandomVerbForSocialFight(pawn, out var verb)) //Use social fight verb instead of melee verb
+            else if (!SocialInteractionUtility.TryGetRandomVerbForSocialFight(pawn, out var verb)) //Use social fight verb instead of melee verb
             {
                 failStr = "Incapable".Translate();
             }
